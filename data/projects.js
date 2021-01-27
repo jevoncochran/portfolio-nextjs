@@ -115,7 +115,7 @@ const projects = [
         detail: "client side routing handled by React Router DOM",
       },
     ],
-    online: "https://tender-mcnulty-be0be2.netlify.app/",
+    online: "https://ljpeg.com/",
     github: "https://github.com/jevoncochran/ljpeg",
   },
   {

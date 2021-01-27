@@ -1,15 +1,19 @@
 // import React, { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import styles from "../styles/About.module.scss";
 // import { ProjectContext } from "../../context/ProjectContext";
 import aboutMePic from "../public/assets/about-me-pic.jpg";
 import Layout from "../components/Layout";
+import { connect } from "react-redux";
+
+import { deactivateHome } from "../redux/actions";
 
 const About = (props) => {
   //   const { deactivateHome } = useContext(ProjectContext);
 
-  //   useEffect(() => {
-  //     deactivateHome();
-  //   }, [deactivateHome]);
+  useEffect(() => {
+    props.deactivateHome();
+  }, []);
 
   return (
     <Layout>
@@ -55,4 +59,4 @@ const About = (props) => {
   );
 };
 
-export default About;
+export default connect(null, { deactivateHome })(About);
