@@ -1,0 +1,58 @@
+// import React, { useContext, useEffect } from "react";
+import styles from "../styles/About.module.scss";
+// import { ProjectContext } from "../../context/ProjectContext";
+import aboutMePic from "../public/assets/about-me-pic.jpg";
+import Layout from "../components/Layout";
+
+const About = (props) => {
+  //   const { deactivateHome } = useContext(ProjectContext);
+
+  //   useEffect(() => {
+  //     deactivateHome();
+  //   }, [deactivateHome]);
+
+  return (
+    <Layout>
+      <div className={styles["about"]}>
+        <div className={styles["about-text-container"]}>
+          <p
+            className={
+              styles["about-text"] + " " + styles["about-text-first-line"]
+            }
+          >
+            I'm Jevon, a Web Designer and Full Stack Developer based in Oakland,
+            CA.
+          </p>
+          <p className={styles["about-text"]}>
+            {" "}
+            I have a passion for design and technology and demonstrated
+            experience in crafting beautiful, eye-catching websites. My keen eye
+            for design converges with my solid software development capabilities
+            and leaves me with the ability to craft a killer product for clients
+            of many stripes.
+          </p>
+          <p className={styles["about-text"]}>
+            If you are in need of a website for yourself, your organization or
+            your business, feel free to reach out to me by pressing the button
+            below.
+          </p>
+          {/* <div className="about-text-btn-container"> */}
+          <button
+            className={styles["about-text-btn"]}
+            onClick={() => props.history.push("/contact")}
+          >
+            Contact
+          </button>
+          {/* </div> */}
+        </div>
+        <img
+          className={styles["about-img"]}
+          src={aboutMePic}
+          alt="Jevon Cochran seated with laptop in front of him"
+        />
+      </div>
+    </Layout>
+  );
+};
+
+export default About;
