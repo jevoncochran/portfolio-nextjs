@@ -1,12 +1,17 @@
 import styles from "../../styles/NavBar.module.scss";
 import Link from "next/link";
+import { connect } from "react-redux";
 
-const NavBar = () => {
+const NavBar = (props) => {
   //   const { onHomePage } = useContext(ProjectContext);
 
   return (
     <div className={styles["nav"]}>
-      <div className={styles["nav-top"]}>
+      <div
+        className={
+          props.onHomePage ? styles["nav-top-home"] : styles["nav-top"]
+        }
+      >
         <Link href="/">
           <a className={styles["nav-top-name"]}>Jevon</a>
         </Link>
@@ -17,7 +22,11 @@ const NavBar = () => {
           <a className={styles["nav-top-title"]}>Full Stack Developer</a>
         </Link>
         <img
-          className={styles["nav-top-pic"]}
+          className={
+            props.onHomePage
+              ? styles["nav-top-pic-home"]
+              : styles["nav-top-pic"]
+          }
           src={require("../../public/assets/linkedIn_pic.jpg")}
           alt="Jevon Cochran professional"
           style={{ marginTop: "5%" }}
@@ -44,4 +53,10 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    onHomePage: state.page.onHomePage,
+  };
+};
+
+export default connect(mapStateToProps, {})(NavBar);

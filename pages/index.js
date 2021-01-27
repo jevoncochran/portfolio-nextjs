@@ -1,14 +1,17 @@
+import { useEffect } from "react";
 import Intro from "../components/Intro";
 import styles from "../styles/Home.module.scss";
 import Layout from "../components/Layout";
+import { connect } from "react-redux";
 
+import { activateHome } from "../redux/actions";
 
-const Index = () => {
+const Index = props => {
   //   const { activateHome } = useContext(ProjectContext);
 
-//   useEffect(() => {
-//     activateHome();
-//   }, [activateHome]);
+  useEffect(() => {
+    props.activateHome();
+  }, []);
 
   return (
     <Layout>
@@ -19,4 +22,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default connect(null, { activateHome })(Index);
