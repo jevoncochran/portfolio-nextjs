@@ -1,0 +1,22 @@
+{
+  "name": "portfolio-nextjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": "https://github.com/jevoncochran/portfolio-nextjs.git",
+  "author": "Jevon Cochran <jevon.cochran@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^10.0.5",
+    "next-images": "^1.7.0",
+    "node-sass": "4.14.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
