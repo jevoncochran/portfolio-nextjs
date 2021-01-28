@@ -3,8 +3,6 @@ import Link from "next/link";
 import { connect } from "react-redux";
 
 const NavBar = (props) => {
-  //   const { onHomePage } = useContext(ProjectContext);
-
   return (
     <div className={styles["nav"]}>
       <div

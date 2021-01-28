@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { activateHome } from "../redux/actions";
 
 const Index = props => {
-  //   const { activateHome } = useContext(ProjectContext);
 
   useEffect(() => {
     props.activateHome();

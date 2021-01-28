@@ -1,31 +1,21 @@
-// import React, { useContext, useEffect } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/Projects.module.scss";
 import { projects } from "../../data/projects";
 import { BiLinkExternal } from "react-icons/bi";
 import { AiFillGithub } from "react-icons/ai";
-import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { connect } from "react-redux";
+import { parseCookies } from "../../helpers/parseCookies";
 
 import { deactivateHome, setProject } from "../../redux/actions";
 
-// import { ProjectContext } from "../../context/ProjectContext";
-
 const ProjectDetails = (props) => {
-  //   const { projectId } = useParams();
-  //   const { deactivateHome } = useContext(ProjectContext);
-
-  //   useEffect(() => {
-  //     deactivateHome();
-  //   }, [deactivateHome]);
-
-  const router = useRouter();
-  const { projectId } = router.query;
+  const [projectId, setProjectId] = useState(() =>
+    JSON.parse(props.initialProjectId)
+  );
 
   useEffect(() => {
     props.deactivateHome();
-    props.setProject(projectId);
   }, []);
 
   return (
@@ -34,16 +24,16 @@ const ProjectDetails = (props) => {
         <div className={styles["projects-pd-top"]}>
           <div className={styles["projects-pd-text-container"]}>
             <p className={styles["projects-pd-title"]}>
-              {projects[props.project - 1].title}
+              {projects[projectId - 1].title}
             </p>
             <p className={styles["projects-pd-description"]}>
-              {projects[props.project - 1].description}
+              {projects[projectId - 1].description}
             </p>
             <p className={styles["projects-pd-purpose"]}>
-              {projects[props.project - 1].purpose}
+              {projects[projectId - 1].purpose}
             </p>
             <ul className={styles["projects-pd-details-list"]}>
-              {projects[props.project - 1].details.map((detail) => (
+              {projects[projectId - 1].details.map((detail) => (
                 <div className={styles["projects-pd-detail-div"]}>
                   <li className={styles["projects-pd-text"]}>
                     {detail.detail}
@@ -69,7 +59,7 @@ const ProjectDetails = (props) => {
             <div className={styles["projects-pd-btn-div"]}>
               <a
                 className={styles["projects-pd-external-link"]}
-                href={projects[props.project - 1].online}
+                href={projects[projectId - 1].online}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -83,7 +73,7 @@ const ProjectDetails = (props) => {
               </a>
               <a
                 className={styles["projects-pd-external-link"]}
-                href={projects[props.project - 1].github}
+                href={projects[projectId - 1].github}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -101,14 +91,14 @@ const ProjectDetails = (props) => {
               TECHNOLOGIES USED:
             </p>
             <div className={styles["projects-pd-technologies"]}>
-              {projects[props.project - 1].technologies.map((t) => (
+              {projects[projectId - 1].technologies.map((t) => (
                 <div className={styles["projects-pd-tech"]}>{t}</div>
               ))}
             </div>
           </div>
         </div>
         <div className={styles["projects-pd-botom"]}>
-          {projects[props.project - 1].images.map((image) => (
+          {projects[projectId - 1].images.map((image) => (
             <img className={styles["projects-pd-img"]} src={image} alt="" />
           ))}
         </div>
@@ -117,12 +107,11 @@ const ProjectDetails = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+ProjectDetails.getInitialProps = ({ req }) => {
+  const cookies = parseCookies(req);
   return {
-    project: state.project.project,
+    initialProjectId: cookies.project,
   };
 };
 
-export default connect(mapStateToProps, { deactivateHome, setProject })(
-  ProjectDetails
-);
+export default connect(null, { deactivateHome, setProject })(ProjectDetails);

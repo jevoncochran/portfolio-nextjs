@@ -1,17 +1,13 @@
-// import React, { useContext, useEffect } from "react";
 import { useEffect } from "react";
 import styles from "../styles/Projects.module.scss";
 import { projects } from "../data/projects";
 import ProjectSummary from "../components/ProjectSummary";
-// import { ProjectContext } from "../../context/ProjectContext";
 import Layout from "../components/Layout";
 import { connect } from "react-redux";
 
 import { deactivateHome } from "../redux/actions";
 
 const Projects = (props) => {
-  //   const { deactivateHome } = useContext(ProjectContext);
-
   useEffect(() => {
     props.deactivateHome();
   }, []);
