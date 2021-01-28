@@ -11,9 +11,7 @@
   "author": "Jevon Cochran <jevon.cochran@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "cookie": "^0.4.1",
     "emailjs-com": "^2.6.4",
-    "js-cookie": "^2.2.1",
     "next": "^10.0.5",
     "next-images": "^1.7.0",
     "next-redux-wrapper": "^6.0.2",

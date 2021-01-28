@@ -1,14 +1,12 @@
 import styles from "../../styles/Projects.module.scss";
 import Link from "next/link";
 import { connect } from "react-redux";
-import Cookie from "js-cookie";
 
 import { setProject } from "../../redux/actions";
 
 const ProjectSummary = (props) => {
   const configureProject = (id) => {
     props.setProject(id);
-    Cookie.set("project", id);
   };
 
   return (
