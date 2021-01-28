@@ -1,5 +1,8 @@
 import styles from "../../styles/Projects.module.scss";
 import Link from "next/link";
+import { connect } from "react-redux";
+
+import { setProject } from "../../redux/actions";
 
 const ProjectSummary = (props) => {
   return (
@@ -20,7 +23,7 @@ const ProjectSummary = (props) => {
           <div className={styles["project-ps-btn-div"]}>
             <button
               className={styles["project-ps-btn"]}
-              //   onClick={() => props.history.push(`/projects/${props.id}`)}
+              onClick={() => props.setProject(props.id)}
             >
               More details
             </button>
@@ -37,4 +40,4 @@ const ProjectSummary = (props) => {
   );
 };
 
-export default ProjectSummary;
+export default connect(null, { setProject })(ProjectSummary);
