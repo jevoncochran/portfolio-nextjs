@@ -34,7 +34,7 @@ const NavBar = (props) => {
       </div>
       <div className={styles["nav-bottom"]}>
         <Link href="/">
-          <a className={styles["nav-link"]}>Home</a>
+          <a className={styles["nav-link"]}>HOME</a>
         </Link>
         <Link href="/about">
           <a className={styles["nav-link"]}>About Me</a>
