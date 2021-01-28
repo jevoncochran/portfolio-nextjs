@@ -1,14 +1,11 @@
-// import React, { useState, useContext, useEffect } from "react";
 import { useState, useEffect } from "react";
 import styles from "../styles/Contact.module.scss";
 import { sendInquiry } from "../functions/sendInquiry";
-// import { ProjectContext } from "../../context/ProjectContext";
 import Layout from "../components/Layout";
 import { connect } from "react-redux";
 import { deactivateHome } from "../redux/actions";
 
 const Contact = (props) => {
-  //   const { deactivateHome } = useContext(ProjectContext);
 
   const [inquiry, setInquiry] = useState({
     first_name: "",

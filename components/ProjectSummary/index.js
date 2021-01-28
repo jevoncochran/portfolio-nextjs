@@ -1,10 +1,16 @@
 import styles from "../../styles/Projects.module.scss";
 import Link from "next/link";
 import { connect } from "react-redux";
+import Cookie from "js-cookie";
 
 import { setProject } from "../../redux/actions";
 
 const ProjectSummary = (props) => {
+  const configureProject = (id) => {
+    props.setProject(id);
+    Cookie.set("project", id);
+  };
+
   return (
     <div className={styles["projects-ps"]}>
       <div className={styles["projects-ps-text-container"]}>
@@ -23,19 +29,21 @@ const ProjectSummary = (props) => {
           <div className={styles["project-ps-btn-div"]}>
             <button
               className={styles["project-ps-btn"]}
-              onClick={() => props.setProject(props.id)}
+              onClick={() => configureProject(props.id)}
             >
               More details
             </button>
           </div>
         </Link>
       </div>
-      <img
-        className={styles["projects-ps-img"]}
-        src={props.leadImage}
-        alt=""
-        onClick={() => props.history.push(`/projects/${props.id}`)}
-      />
+      <Link href={`/projects/${props.id}`}>
+        <img
+          className={styles["projects-ps-img"]}
+          src={props.leadImage}
+          alt=""
+          onClick={() => configureProject(props.id)}
+        />
+      </Link>
     </div>
   );
 };
