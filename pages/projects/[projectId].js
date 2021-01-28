@@ -3,16 +3,15 @@ import styles from "../../styles/Projects.module.scss";
 import { projects } from "../../data/projects";
 import { BiLinkExternal } from "react-icons/bi";
 import { AiFillGithub } from "react-icons/ai";
+import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import { connect } from "react-redux";
-import { parseCookies } from "../../helpers/parseCookies";
 
 import { deactivateHome, setProject } from "../../redux/actions";
 
 const ProjectDetails = (props) => {
-  const [projectId, setProjectId] = useState(() =>
-    JSON.parse(props.initialProjectId)
-  );
+  const router = useRouter();
+  const { projectId } = router.query;
 
   useEffect(() => {
     props.deactivateHome();
@@ -105,13 +104,6 @@ const ProjectDetails = (props) => {
       </div>
     </Layout>
   );
-};
-
-ProjectDetails.getInitialProps = ({ req }) => {
-  const cookies = parseCookies(req);
-  return {
-    initialProjectId: cookies.project,
-  };
 };
 
 export default connect(null, { deactivateHome, setProject })(ProjectDetails);
