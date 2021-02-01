@@ -1,9 +1,11 @@
+$mobile: 500px;
+
 // index.js
 
 .projects {
   width: 80%;
   //   border: 1px solid red;
-  padding: 2%;
+  padding: 5%;
   margin-left: 20%;
   text-align: center;
 }
@@ -22,7 +24,7 @@
   //   border-top: 1px solid black;
   border-bottom: 1px solid #2c3259;
   display: flex;
-  padding: 2% 0%;
+  padding: 8% 0%;
   justify-content: space-between;
 }
 
@@ -65,7 +67,6 @@
   font-size: 1.3rem;
   margin-right: 2%;
   margin-bottom: 2%;
-  //   text-transform: uppercase;
 }
 
 .project-ps-btn-div {
@@ -157,14 +158,14 @@
   //   color: #2c3259;
 }
 
+.projects-pd-btn-div {
+  display: flex;
+}
+
 .projects-pd-external-link {
   width: 25%;
   margin-right: 2%;
   text-decoration: none;
-}
-
-.projects-pd-btn-div {
-  display: flex;
 }
 
 .projects-pd-btn {
@@ -226,4 +227,83 @@
   border: 1px solid #dcb13c;
   width: 100%;
   margin-bottom: 2%;
+}
+
+@media (max-width: $mobile) {
+  .projects {
+    width: 100%;
+    margin: 0%;
+  }
+
+  .projects-ps {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .projects-ps-text-container {
+    width: 100%;
+  }
+
+  .projects-ps-technologies-container {
+    // border: 1px dashed black;
+    justify-content: center;
+  }
+
+  .project-ps-btn {
+    width: 35%;
+  }
+
+  .projects-ps-img {
+    width: 100%;
+  }
+
+  .projects-pd {
+    width: 100%;
+    margin: 0%;
+    padding: 5%;
+  }
+
+  .projects-pd-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projects-pd-text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  .projects-pd-description {
+    text-align: center;
+  }
+
+  .projects-pd-purpose {
+    text-align: center;
+  }
+
+  .projects-pd-btn-div {
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 2%;
+  }
+
+  .projects-pd-external-link {
+    width: 40%;
+    margin-right: 2%;
+    text-decoration: none;
+  }
+
+  .projects-pd-tech-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projects-pd-technologies {
+    justify-content: center;
+  }
 }

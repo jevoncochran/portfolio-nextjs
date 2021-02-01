@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 
 const NavBar = (props) => {
   return (
-    <div className={styles["nav"]}>
+    <div
+      className={
+        props.mobileNavVisibile ? styles["nav-mobile-show"] : styles["nav"]
+      }
+    >
       <div
         className={
           props.onHomePage ? styles["nav-top-home"] : styles["nav-top"]
@@ -54,6 +58,7 @@ const NavBar = (props) => {
 const mapStateToProps = (state) => {
   return {
     onHomePage: state.page.onHomePage,
+    mobileNavVisibile: state.nav.mobileNavVisibile,
   };
 };
 

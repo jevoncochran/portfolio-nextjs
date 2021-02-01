@@ -1,5 +1,8 @@
 import Head from "next/head";
 import NavBar from "../NavBar";
+import MobileHamburger from "../MobileHamburger";
+import { connect } from "react-redux";
+import { hideMobileNav } from "../../redux/actions";
 
 const Layout = (props) => {
   return (
@@ -34,27 +37,49 @@ const Layout = (props) => {
       </Head>
       <div className="body">
         <NavBar />
-        {props.children}
-        <style jsx>
-          {`
-            .body {
-              display: flex;
-            }
-          `}
-        </style>
-        <style jsx global>
-          {`
-            * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-              font-size: 62.5%;
-            }
-          `}
-        </style>
+        <div
+          className={
+            props.mobileNavVisibile ? "low-visibility" : "high-visibility"
+          }
+          onClick={props.mobileNavVisibile ? props.hideMobileNav : null}
+        >
+          <MobileHamburger />
+          {props.children}
+          <style jsx>
+            {`
+              .body {
+                display: flex;
+              }
+
+              .low-visibility {
+                opacity: 0.5;
+              }
+
+              .high-visibility {
+                opacity: 1;
+              }
+            `}
+          </style>
+          <style jsx global>
+            {`
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-size: 62.5%;
+              }
+            `}
+          </style>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Layout;
+const mapStateToProps = (state) => {
+  return {
+    mobileNavVisibile: state.nav.mobileNavVisibile,
+  };
+};
+
+export default connect(mapStateToProps, { hideMobileNav })(Layout);
