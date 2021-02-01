@@ -20,7 +20,7 @@ $mobile: 500px;
   position: relative;
   top: 78%;
   left: 10%;
-  color: #fff;
+  color: #e4e1df;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,9 +30,9 @@ $mobile: 500px;
 .home-intro-text-background {
   width: 100%;
   height: 20vh;
-  background-color: #0a0e28;
+  background-color: #00274c;
   position: absolute;
-  opacity: 0.85;
+  // opacity: 0.85;
 }
 
 .home-intro-headline {
@@ -46,7 +46,7 @@ $mobile: 500px;
   font-size: 2.8rem;
   position: relative;
   text-align: center;
-  color: #dcb13c;
+  color: #ffcb05;
 }
 
 @media (max-width: $mobile) {
