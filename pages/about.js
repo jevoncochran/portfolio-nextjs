@@ -24,6 +24,11 @@ const About = (props) => {
             I'm Jevon, a Web Designer and Full Stack Developer based in Oakland,
             CA.
           </p>
+          <img
+          className={styles["about-img-mobile"]}
+          src={aboutMePic}
+          alt="Jevon Cochran seated with laptop in front of him"
+        />
           <p className={styles["about-text"]}>
             {" "}
             I have a passion for design and technology and demonstrated
