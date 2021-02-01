@@ -18,16 +18,19 @@ const ProjectSummary = (props) => {
           TECHNOLOGIES:
         </p>
         <div className={styles["projects-ps-technologies-container"]}>
-          {props.technologies &&
-            props.technologies.map((t) => (
-              <div className={styles["projects-ps-tech"]}>{t}</div>
-            ))}
+          {props.technologies.map((t) => (
+            <div className={styles["projects-ps-tech"]}>{t}</div>
+          ))}
         </div>
         <Link href={`/projects/${props.id}`}>
           <div className={styles["project-ps-btn-div"]}>
             <button
               className={styles["project-ps-btn"]}
-              onClick={() => configureProject(props.id)}
+              onClick={
+                props.mobileNavVisibile
+                  ? null
+                  : () => configureProject(props.id)
+              }
             >
               More details
             </button>
@@ -39,11 +42,19 @@ const ProjectSummary = (props) => {
           className={styles["projects-ps-img"]}
           src={props.leadImage}
           alt=""
-          onClick={() => configureProject(props.id)}
+          onClick={
+            props.mobileNavVisibile ? null : () => configureProject(props.id)
+          }
         />
       </Link>
     </div>
   );
 };
 
-export default connect(null, { setProject })(ProjectSummary);
+const mapStateToProps = (state) => {
+  return {
+    mobileNavVisibile: state.nav.mobileNavVisibile,
+  };
+};
+
+export default connect(mapStateToProps, { setProject })(ProjectSummary);
